@@ -220,9 +220,12 @@ func (s *ethService) GetTransactionReceipt(r *http.Request, arg *string, reply *
 	}
 	from := pub.GetAddress()
 	result.From = from.String()
-	result.To = string(rawTx.To)
+	result.To = hex.EncodeToString(rawTx.To)
 	result.TransactionHash = txHash
-	// *reply = *result
+
+	fmt.Printf("%+v\n",result)
+
+	//*reply = *result
 	return nil
 }
 
